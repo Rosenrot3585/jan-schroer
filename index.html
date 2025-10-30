@@ -32,15 +32,24 @@
 
     header {
       background: var(--header-bg);
-      background-image: url(https://images.nightcafe.studio/jobs/tQuU6YrloO8EuOs3Hioa/tQuU6YrloO8EuOs3Hioa--0--ny0ah.jpg?tr=w-1600,c-at_max);
+      background-image: url(https://images.nightcafe.studio/jobs/OsPJHKwqzCLzKbEV9Mh8/OsPJHKwqzCLzKbEV9Mh8--0--6zz9j.jpg?tr=w-1600,c-at_max);
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: center center;
       background-size: cover;
       color: white;
       text-align: center;
       padding: 5rem 1rem 4rem;
       position: relative;
     }
+    #fondo:before {
+	content:'';
+	position: absolute;
+        top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.6);
+}
     header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
     header p { font-size: 1.2rem; opacity: 0.9; }
     .btn-contacto {
