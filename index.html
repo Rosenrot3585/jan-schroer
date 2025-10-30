@@ -1,81 +1,89 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soporte Técnico IT en Buenos Aires | Jan Schroer</title>
-  <meta name="description" content="Servicios de soporte técnico IT en Buenos Aires. Mantenimiento de infraestructura, redes, virtualización y consultoría informática. Atención personalizada para empresas y particulares." />
-  <meta name="keywords" content="soporte técnico, IT, informática, infraestructura, redes, mantenimiento, virtualización, Azure, Microsoft 365, Google Workspace, Buenos Aires" />
+  <meta name="description" content="Soporte técnico y consultoría IT profesional en Buenos Aires. Mantenimiento de infraestructura, redes, virtualización y servicios cloud para empresas y particulares." />
   <meta name="author" content="Jan Andres Schroer" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Jan Schroer - Soporte Técnico IT",
-    "description": "Servicios profesionales de soporte técnico, mantenimiento de infraestructura IT y asesoramiento informático en Buenos Aires.",
-    "image": "https://example.com/profile.jpg",
-    "url": "https://rosenrot3585.github.io/jan-schroer/",
-    "telephone": "+54 9 11 6982 4804",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Buenos Aires",
-      "addressCountry": "AR"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/jan-schroer"
-    ]
-  }
-  </script>
+
+  <!-- Estilos -->
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f9fb;
-      color: #222;
+      background-color: #f4f7fa;
+      color: #1c1c1c;
       line-height: 1.6;
     }
+
     header {
-      background-color: #0a192f;
+      background: linear-gradient(135deg, #0a192f, #0e356a);
       color: white;
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 5rem 1rem 4rem;
+      position: relative;
+      overflow: hidden;
     }
+
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
+      animation: fadeIn 1s ease-in-out;
     }
     header p {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      margin-top: 0.8rem;
+      opacity: 0.9;
     }
+    .btn-contacto {
+      margin-top: 2rem;
+      display: inline-block;
+      background-color: #0077b6;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .btn-contacto:hover { background-color: #005f86; }
+
     section {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem 2rem;
+      max-width: 950px;
+      margin: 3rem auto;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     h2 {
       color: #0a192f;
       margin-bottom: 1rem;
+      border-left: 4px solid #0077b6;
+      padding-left: 0.6rem;
     }
-    ul {
-      list-style: none;
-      margin-top: 0.5rem;
-    }
-    li::before {
-      content: '• ';
-      color: #0077b6;
-    }
+
+    ul { list-style: none; margin-top: 0.5rem; }
+    li::before { content: "✔ "; color: #0077b6; font-weight: bold; }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      color: #555;
+      color: #666;
+      font-size: 0.9rem;
     }
+
     .contacto a {
       display: inline-block;
       margin: 0.5rem;
@@ -86,48 +94,75 @@
       border-radius: 6px;
       transition: background-color 0.3s ease;
     }
-    .contacto a:hover {
-      background-color: #005f86;
+    .contacto a:hover { background-color: #005f86; }
+
+    /* Botón fijo de WhatsApp */
+    .whatsapp-fixed {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 100;
+    }
+    .whatsapp-fixed:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      section { margin: 1.5rem 1rem; padding: 1.5rem; }
     }
   </style>
+
 </head>
 <body>
+
   <header>
     <h1>Soporte Técnico IT en Buenos Aires</h1>
-    <p>Servicios profesionales de mantenimiento, redes, virtualización y asesoría informática — 15+ años de experiencia</p>
+    <p>Soluciones confiables en infraestructura, redes y servicios cloud — más de 15 años de experiencia.</p>
+    <a href="#contacto" class="btn-contacto">Contactame</a>
   </header>
 
-
-  <section id="servicios">
-    <h2>Servicios de Soporte Técnico IT</h2>
-    <ul>
-      <li>Soporte técnico remoto y en sitio para empresas y particulares.</li>
-      <li>Gestión y mantenimiento integral de infraestructura IT (servidores, racks y cableado).</li>
-      <li>Mantenimeinto de sistemas.</li>
-      <li>Implementación y administración de redes y seguridad (pfSense, Ubiquiti, Mikrotik).</li>
-      <li>Virtualización y administración de entornos.</li>
-      <li>Servicios Cloud.</li>
-      <li>Consultoría IT.</li>
-    </ul>
+  <section id="perfil">
+    <h2>Sobre mí</h2>
+    <p>Soy <strong>Jan Schroer</strong>, profesional en soporte técnico y administración de infraestructura IT. Brindo atención personalizada a empresas y particulares, asegurando entornos tecnológicos estables, seguros y eficientes.</p>
   </section>
 
-  <section id="experiencia">
-    <h2>Experiencia Destacada</h2>
-    <h3>Puesto que ocupé en relación de dependiencia</h3>
-    <p>Gerente de Operaciones y Proyectos MSP. Coordinación de equipos de Mesa de Ayuda e Infraestructura, gestión de proyectos IT y asistencia en la implementación de estándares ISO.</p>
-    <h3>Mis inicios</h3>
-    <p>Empecé como Técnico Jr. brindando soporte en IT. pasando por los niveles 1, 2 y 3, implementé cableado estructurado y hacía mantenimiento de infraestructura IT.</p>
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+      <li>Soporte técnico remoto y en sitio.</li>
+      <li>Mantenimiento preventivo y correctivo de servidores y redes.</li>
+      <li>Implementación y administración de redes seguras (pfSense, Mikrotik, Ubiquiti).</li>
+      <li>Virtualización y entornos de alta disponibilidad.</li>
+      <li>Consultoría y optimización de infraestructura IT.</li>
+      <li>Configuración y gestión de servicios Cloud (Microsoft 365, Azure, Google Workspace).</li>
+    </ul>
   </section>
 
   <section id="tecnologias">
     <h2>Tecnologías</h2>
     <ul>
       <li>VMware vSphere ESXi, Proxmox VE</li>
-      <li>pfSense, Mikrotik, Fortinet</li>
       <li>Windows Server, Linux</li>
+      <li>pfSense, Fortinet, Mikrotik</li>
       <li>Ubiquiti UniFi, TP-Link Omada</li>
-      <li>Microsoft Azure (AZ-104, AZ-305)</li>
-      <li>Microsoft 365, Google Workspace</li>
       <li>PBX IP (Issabel, Elastix)</li>
       <li>Cableado estructurado y armado de racks</li>
     </ul>
@@ -135,14 +170,35 @@
 
   <section id="contacto" class="contacto">
     <h2>Contacto</h2>
-    <p>¿Necesitás soporte técnico o asesoramiento IT en Buenos Aires? Contactame:</p>
+    <p>¿Necesitás soporte o asesoramiento IT? Hablemos:</p>
     <a href="mailto:eljan.88@gmail.com">📧 Enviar correo</a>
     <a href="https://wa.me/5491169824804" target="_blank">💬 WhatsApp</a>
     <p>📍 Buenos Aires, Argentina</p>
   </section>
 
   <footer>
-    <p>© 2025 Jan Schroer - Servicios de Soporte Técnico IT en Buenos Aires.</p>
+    <p>© 2025 Jan Schroer — Soporte Técnico IT en Buenos Aires</p>
   </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+
+  <a href="https://wa.me/5491169824804" class="whatsapp-fixed" target="_blank" title="Enviar mensaje por WhatsApp">
+    💬
+  </a>
+
+  <script>
+    // Animación al hacer scroll
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+
 </body>
 </html>
