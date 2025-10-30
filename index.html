@@ -147,7 +147,18 @@
     }
     .servicio-header:hover { background: rgba(0,0,0,0.03); }
     .servicio-header span { display: flex; align-items: center; font-weight: 500; }
-    .servicio-icon { color: var(--accent); margin-right: 0.5rem; }
+    .servicio-icon {
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+      font-size: 14px;
+    }
     .toggle-desc {
       background: var(--accent);
       color: white;
@@ -165,15 +176,19 @@
       padding-left: 0.2rem;
       border-left: 2px solid var(--accent);
       color: var(--text-color);
-      transition: max-height 0.5s ease, opacity 0.5s ease;
+      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.3s ease;
       opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
     .servicio-desc.show {
       max-height: 200px;
       opacity: 1;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
-    /* Banner / imagen */
+    /* Banner / imagen grande */
     .banner {
       width: 100%;
       border-radius: 12px;
@@ -181,17 +196,45 @@
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .banner img { width: 100%; display: block; object-fit: cover; }
+    .banner img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .banner img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Imagen más delgada estilo header para sección tecnologías */
+    .banner-tec {
+      width: 100%;
+      max-width: 950px;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .banner-tec img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .banner-tec img:hover {
+      transform: scale(1.03);
+    }
 
     @media (max-width: 768px) {
       header h1 { font-size: 2rem; }
       section { margin: 1.5rem 1rem; padding: 1.5rem; }
+      .banner-tec img { height: 140px; }
     }
   </style>
 </head>
 <body>
 
-  <button class="dark-toggle"> ☾/☀︎ </button>
+  <button class="dark-toggle">☾</button>
 
   <header>
     <h1>Soporte Técnico IT en Buenos Aires</h1>
@@ -199,7 +242,7 @@
     <a href="#contacto" class="btn-contacto">Contactame</a>
   </header>
 
-  <!-- Banner -->
+  <!-- Banner grande -->
   <div class="banner">
     <img src="https://images.nightcafe.studio/jobs/tQuU6YrloO8EuOs3Hioa/tQuU6YrloO8EuOs3Hioa--0--ny0ah.jpg?tr=w-1600,c-at_max" alt="Tecnología e infraestructura IT">
   </div>
@@ -262,6 +305,11 @@
     <img src="https://images.unsplash.com/photo-1581090700227-6d8b54b4f2b8?auto=format&fit=crop&w=1400&q=80" alt="Consultoría IT">
   </div>
 
+  <!-- Imagen tecnologías ajustada -->
+  <div class="banner-tec">
+    <img src="https://images.unsplash.com/photo-1581090700227-6d8b54b4f2b8?auto=format&fit=crop&w=1400&q=80" alt="Tecnologías IT">
+  </div>
+
   <section id="tecnologias">
     <h2>Tecnologías</h2>
     <ul>
@@ -291,7 +339,10 @@
   <script>
     // Toggle dark/light
     const toggleBtn = document.querySelector('.dark-toggle');
-    toggleBtn.addEventListener('click', () => document.body.classList.toggle('dark'));
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleBtn.textContent = document.body.classList.contains('dark') ? '☀︎' : '☾';
+    });
 
     // Animación al hacer scroll
     const sections = document.querySelectorAll("section");
@@ -314,4 +365,3 @@
   </script>
 </body>
 </html>
-
