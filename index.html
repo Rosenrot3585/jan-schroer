@@ -113,8 +113,8 @@
 </head>
 <body>
 
-  <header class="hero">
-    <div class="hero-slider">
+  <header class="hero" style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.1)">
+    <div class="hero-slider" style="filter:blur(2px) brightness(0.6)">
       <div class="slide active">
         <img src="https://images.unsplash.com/photo-1581090464777-5ef8dce9c9f1?auto=format&fit=crop&w=1600&q=80" alt="Tecnología moderna" />
       </div>
@@ -126,7 +126,7 @@
       </div>
     </div>
 
-    <div class="hero-content">
+    <div class="hero-content" style="background: rgba(255,255,255,0.08); padding:2rem; border-radius:18px; backdrop-filter:blur(10px); box-shadow:0 8px 32px rgba(0,0,0,0.25)">
       <h1>Soporte Técnico IT</h1>
       <p>Infraestructura, redes y servicios cloud — soluciones profesionales para empresas.</p>
       <a href="#contacto" class="btn-contacto">Contactame</a>
@@ -134,105 +134,116 @@
   </header>
 
   <main>
-    <section id="servicios" class="container">
-      <div class="card">
-        <h2>Servicios</h2>
-        <p class="muted">Soluciones a medida. Elegí el servicio y consultá por un diagnóstico sin compromiso.</p>
-
-        <div class="services-grid" style="margin-top:16px">
-          <!-- Service 1 -->
-          <div class="service-item">
-            <div class="service-media">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60" alt="Soporte remoto">
-            </div>
-            <div class="service-body">
-              <h3>Soporte remoto y en sitio</h3>
-              <p class="muted">Resolución rápida de incidentes, diagnóstico remoto y atención en sitio según requerimiento.</p>
-              <div class="service-actions">
-                <a class="btn-primary" href="https://wa.me/5491169824804" target="_blank">Contactar</a>
-                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 2 -->
-          <div class="service-item">
-            <div class="service-media">
-              <img src="https://images.unsplash.com/photo-1581093458401-4b3b1a1f7b69?auto=format&fit=crop&w=800&q=60" alt="Mantenimiento servidores">
-            </div>
-            <div class="service-body">
-              <h3>Mantenimiento de servidores</h3>
-              <p class="muted">Monitoreo, parches y mejoras de rendimiento para minimizar tiempo de inactividad.</p>
-              <div class="service-actions">
-                <a class="btn-primary" href="#contacto">Solicitar diagnóstico</a>
-                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 3 -->
-          <div class="service-item">
-            <div class="service-media">
-              <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=60" alt="Redes seguras">
-            </div>
-            <div class="service-body">
-              <h3>Redes seguras</h3>
-              <p class="muted">Diseño e implementación de firewalls y segmentación con pfSense, Ubiquiti y Mikrotik.</p>
-              <div class="service-actions">
-                <a class="btn-primary" href="#contacto">Pedir presupuesto</a>
-                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 4 -->
-          <div class="service-item">
-            <div class="service-media">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60" alt="Cloud services">
-            </div>
-            <div class="service-body">
-              <h3>Servicios Cloud</h3>
-              <p class="muted">Migración, administración y seguridad en Microsoft 365, Azure y Google Workspace.</p>
-              <div class="service-actions">
-                <a class="btn-primary" href="#contacto">Consultá migración</a>
-                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 5 -->
-          <div class="service-item">
-            <div class="service-media">
-              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=800&q=60" alt="Virtualizacion">
-            </div>
-            <div class="service-body">
-              <h3>Virtualización & HA</h3>
-              <p class="muted">Proxmox y VMware para alta disponibilidad y recuperación ante fallas.</p>
-              <div class="service-actions">
-                <a class="btn-primary" href="#contacto">Hablemos</a>
-                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service 6 -->
-          <div class="service-item">
-            <div class="service-media">
-              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60" alt="Consultoria">
-            </div>
-            <div class="service-body">
-              <h3>Consultoría IT</h3>
-              <p class="muted">Estrategia, diseño y plan de modernización a medida para tu organización.</p>
-              <div class="service-actions">
-                <a class="btn-primary" href="#contacto">Agendar consulta</a>
-                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
-              </div>
-            </div>
-          </div>
-
+    <section id="servicios">
+  <h2>Servicios</h2>
+  <div class="servicios-grid">
+    <div class="card-flip">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-headset"></i>
+          <h3>Soporte remoto y en sitio</h3>
+        </div>
+        <div class="card-back">
+          <p>Asistencia técnica profesional, presencial o remota, con respuesta rápida y diagnósticos precisos.</p>
         </div>
       </div>
-    </section>
+    </div>
+
+    <div class="card-flip">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-server"></i>
+          <h3>Mantenimiento de servidores</h3>
+        </div>
+        <div class="card-back">
+          <p>Monitoreo, actualización y reparación de servidores para garantizar estabilidad y alto desempeño.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-flip">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-network-wired"></i>
+          <h3>Redes seguras</h3>
+        </div>
+        <div class="card-back">
+          <p>Implementación y administración de redes seguras con pfSense, Mikrotik y Ubiquiti.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-flip">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-cloud"></i>
+          <h3>Servicios Cloud</h3>
+        </div>
+        <div class="card-back">
+          <p>Configuración de Microsoft 365, Azure y Google Workspace para mejorar productividad y seguridad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card-flip {
+    perspective: 1000px;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    transform-style: preserve-3d;
+    transition: transform 0.7s;
+    cursor: pointer;
+  }
+
+  .card-inner:hover {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: var(--section-bg);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .card-front i {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--accent);
+  }
+
+  .card-front h3 {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+</style>
 
     <section id="tecnologias" class="container">
       <div class="card">
@@ -240,14 +251,14 @@
         <p class="muted">Plataformas y herramientas en las que trabajo habitualmente.</p>
 
         <div class="tech-grid">
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/VMware_logo.svg" alt="VMware"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Proxmox_Logo.svg" alt="Proxmox"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Red_Hat_logo.svg" alt="Linux"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Windows_logo_-_2021.svg" alt="Windows Server"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Ubisoft_logo.svg" alt="Ubiquiti placeholder"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/MikroTik_logo.svg" alt="Mikrotik"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Logo_pfSense.svg" alt="pfSense"></div>
-          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Microsoft_Azure_logo.svg" alt="Azure"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vmware/vmware-original.svg" alt="VMware"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/proxmox/proxmox-original.svg" alt="Proxmox"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows Server"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg" alt="pfSense placeholder"></div>
+          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Mikrotik placeholder"></div>
         </div>
       </div>
     </section>
