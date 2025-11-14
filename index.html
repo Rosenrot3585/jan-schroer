@@ -8,45 +8,50 @@
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans">
 
-  <!-- HERO -->
-  <style>
-    /* Parallax layers */
-    .parallax-layer {
-      position: absolute;
-      inset: 0;
-      width: 120%;
-      height: 120%;
-      object-fit: cover;
-      opacity: 0.35;
-      transition: transform 0.2s ease-out;
-    }
-
-    /* Neon glow */
-    .neon-glow {
-      text-shadow: 0 0 8px rgba(0,180,255,0.7), 0 0 16px rgba(0,150,255,0.5);
-    }
-  </style>
-
+  <!-- HERO SLIDER -->
   <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-    <!-- Deep layer -->
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
-         class="parallax-layer" data-speed="1">
 
-    <!-- Mid layer -->
-    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80"
-         class="parallax-layer opacity-50" data-speed="2">
+    <!-- Slider container -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden" id="slider">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80" class="slide-img" />
+      <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80" class="slide-img" />
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" class="slide-img" />
+    </div>
 
-    <!-- Top decorative layer -->
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
-         class="parallax-layer opacity-40" data-speed="3">
+    <!-- Overlay cyberpunk glow -->
+    <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-purple-500/10 to-blue-500/10 mix-blend-overlay"></div>
 
-    <!-- HERO CONTENT -->
+    <style>
+      .slide-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.8s ease-in-out;
+      }
+      .slide-img.active { opacity: 0.45; }
+
+      .cyber-glow {
+        text-shadow: 0 0 10px rgba(0,255,255,0.9), 0 0 20px rgba(0,120,255,0.6);
+      }
+
+      /* Animaciones de entrada */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease forwards;
+      }
+      @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+
     <div class="relative z-10 text-center max-w-3xl p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl border border-cyan-400/30">
-      <h1 class="text-4xl font-bold mb-4 neon-glow">Soporte Técnico IT</h1>
-      <p class="text-lg opacity-90">Más de 15 años de experiencia en infraestructura, redes y servicios cloud.</p>
-      <a href="#contacto" class="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-semibold neon-glow">
-        Contactar
-      </a>
+      <h1 class="text-4xl font-bold mb-4 cyber-glow fade-in-up">Soporte Técnico IT</h1>
+      <p class="text-lg opacity-90 fade-in-up" style="animation-delay: .2s">Más de 15 años de experiencia en infraestructura, redes y servicios cloud.</p>
+      <a href="#contacto" class="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-semibold cyber-glow fade-in-up" style="animation-delay: .4s">Contactar</a>
     </div>
   </header>
 
@@ -161,6 +166,29 @@
       layer.style.transform = `translateY(${scrollY * speed}px)`;
     });
   });
+</script>
+
+<script>
+  // HERO SLIDER SCRIPT
+  const slides = document.querySelectorAll('.slide-img');
+  let index = 0;
+  function showSlide() {
+    slides.forEach((s,i)=> s.classList.toggle('active', i === index));
+    index = (index + 1) % slides.length;
+  }
+  showSlide();
+  setInterval(showSlide, 5000);
+
+  // ENTRY ANIMATIONS FOR SERVICES & TECHNOLOGIES
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-up');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('#servicios .group, #tecnologias img').forEach(el => observer.observe(el));
 </script>
 
 </body>
