@@ -9,14 +9,44 @@
 <body class="bg-slate-900 text-slate-100 font-sans">
 
   <!-- HERO -->
-  <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80" 
-         class="absolute inset-0 w-full h-full object-cover opacity-40" />
+  <style>
+    /* Parallax layers */
+    .parallax-layer {
+      position: absolute;
+      inset: 0;
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      opacity: 0.35;
+      transition: transform 0.2s ease-out;
+    }
 
-    <div class="relative z-10 text-center max-w-3xl p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl">
-      <h1 class="text-4xl font-bold mb-4">Soporte Técnico IT</h1>
+    /* Neon glow */
+    .neon-glow {
+      text-shadow: 0 0 8px rgba(0,180,255,0.7), 0 0 16px rgba(0,150,255,0.5);
+    }
+  </style>
+
+  <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+    <!-- Deep layer -->
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80"
+         class="parallax-layer" data-speed="1">
+
+    <!-- Mid layer -->
+    <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80"
+         class="parallax-layer opacity-50" data-speed="2">
+
+    <!-- Top decorative layer -->
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
+         class="parallax-layer opacity-40" data-speed="3">
+
+    <!-- HERO CONTENT -->
+    <div class="relative z-10 text-center max-w-3xl p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl border border-cyan-400/30">
+      <h1 class="text-4xl font-bold mb-4 neon-glow">Soporte Técnico IT</h1>
       <p class="text-lg opacity-90">Más de 15 años de experiencia en infraestructura, redes y servicios cloud.</p>
-      <a href="#contacto" class="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-semibold">Contactar</a>
+      <a href="#contacto" class="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-semibold neon-glow">
+        Contactar
+      </a>
     </div>
   </header>
 
@@ -108,6 +138,30 @@
   <a href="https://wa.me/" target="_blank" class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-500 p-4 rounded-full shadow-xl transition">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-8" />
   </a>
+
+<script>
+  const layers = document.querySelectorAll('.parallax-layer');
+
+  // Mouse parallax
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX - window.innerWidth / 2) / 40;
+    const y = (e.clientY - window.innerHeight / 2) / 40;
+
+    layers.forEach(layer => {
+      const speed = layer.getAttribute('data-speed');
+      layer.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+    });
+  });
+
+  // Scroll parallax
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY * 0.2;
+    layers.forEach(layer => {
+      const speed = layer.getAttribute('data-speed');
+      layer.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+  });
+</script>
 
 </body>
 </html>
