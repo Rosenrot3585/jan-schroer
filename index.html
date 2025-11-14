@@ -102,64 +102,35 @@
     /* responsive */
     @media (max-width:900px){ .hero{ grid-template-columns:1fr } .hero-right{ order:-1 } .service-item{ grid-template-columns: 110px 1fr } }
     @media (max-width:520px){ .service-item{ grid-template-columns:1fr; } .service-media{ height:140px } .tech-grid{ grid-template-columns: repeat(2,1fr) } }
-  </style>
+  .hero { position:relative; height:60vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; color:white; }
+.hero-slider { position:absolute; top:0; left:0; width:100%; height:100%; }
+.hero-slider .slide { position:absolute; width:100%; height:100%; opacity:0; transition:opacity 1s ease; }
+.hero-slider .slide.active { opacity:1; }
+.hero-slider img { width:100%; height:100%; object-fit:cover; filter:brightness(0.45); }
+.hero-content { position:relative; z-index:2; max-width:700px; padding:1rem; }
+
+</style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo">JS</div>
-        <div>
-          <h3>Jan Schroer</h3>
-          <div class="muted" style="font-size:13px">Soporte Técnico · Buenos Aires</div>
-        </div>
+  <header class="hero">
+    <div class="hero-slider">
+      <div class="slide active">
+        <img src="https://images.unsplash.com/photo-1581090464777-5ef8dce9c9f1?auto=format&fit=crop&w=1600&q=80" alt="Tecnología moderna" />
       </div>
-
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle"><i class="fas fa-adjust"></i></button>
-        <a href="#contacto" class="btn-outline">Contacto</a>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80" alt="Infraestructura IT" />
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" alt="Redes y servidores" />
       </div>
     </div>
 
-    <div class="container hero">
-      <div class="hero-left">
-        <h1>Infraestructura IT confiable que hace funcionar tu empresa.</h1>
-        <p class="muted">Soporte, redes, virtualización y servicios cloud con foco en disponibilidad y seguridad. Atención profesional para pymes y proyectos críticos.</p>
-        <div class="hero-ctas">
-          <a class="btn-primary" href="https://wa.me/5491169824804" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;Consultá por WhatsApp</a>
-          <a class="btn-outline" href="mailto:eljan.88@gmail.com"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Enviar correo</a>
-        </div>
-
-        <div class="stat-row" style="margin-top:18px">
-          <div class="stat">15+ años experiencia</div>
-          <div class="stat">Soporte 24/7 (acordado)</div>
-        </div>
-      </div>
-
-      <div class="hero-right card hero-card">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div class="muted">Servicios más solicitados</div>
-            <h3 style="margin:6px 0 0">Mantenimiento · Redes · Cloud</h3>
-          </div>
-          <div class="muted">Tarifas y packs</div>
-        </div>
-
-        <div style="margin-top:14px;display:grid;gap:10px">
-          <div style="display:flex;justify-content:space-between;align-items:center"><div class="muted">Tiempo medio de respuesta</div><strong>~2h</strong></div>
-          <div style="display:flex;justify-content:space-between;align-items:center"><div class="muted">Clientes recurrentes</div><strong>80%</strong></div>
-        </div>
-
-        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-          <div class="pill">Proxmox</div>
-          <div class="pill">VMware</div>
-          <div class="pill">pfSense</div>
-        </div>
-      </div>
+    <div class="hero-content">
+      <h1>Soporte Técnico IT</h1>
+      <p>Infraestructura, redes y servicios cloud — soluciones profesionales para empresas.</p>
+      <a href="#contacto" class="btn-contacto">Contactame</a>
     </div>
-
-    <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440 80 L0 80 Z" fill="var(--card)"/></svg>
   </header>
 
   <main>
@@ -281,18 +252,7 @@
       </div>
     </section>
 
-    <section id="testimonial" class="container">
-      <div class="card" style="display:flex;gap:18px;align-items:center">
-        <div style="flex:1">
-          <h2>Clientes dicen</h2>
-          <p class="muted">"Jan nos acompañó en la migración a Proxmox y mejoró la resiliencia de nuestros servicios críticos. Comunicación clara y soluciones prácticas."</p>
-          <div class="muted">— Empresa XYZ</div>
-        </div>
-        <div style="width:160px;text-align:center">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60" alt="Cliente" style="width:96px;height:96px;border-radius:12px;object-fit:cover;display:block;margin:0 auto;box-shadow:0 8px 20px rgba(2,8,18,0.6)">
-        </div>
-      </div>
-    </section>
+    
 
     <section id="contacto" class="container">
       <div class="card">
@@ -348,5 +308,14 @@
     }
     reveal('section');
   </script>
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+setInterval(() => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}, 4500);
+</script>
 </body>
 </html>
