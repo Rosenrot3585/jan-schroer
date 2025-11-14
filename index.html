@@ -46,6 +46,50 @@
       @keyframes fadeUp {
         to { opacity: 1; transform: translateY(0); }
       }
+      .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+  }
+
+  .flip-card:hover .flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-front,
+  .flip-back {
+    position: absolute;
+    inset: 0;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+  }
+
+  .flip-front {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+    background: rgba(10,10,25,0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,255,255,0.3);
+    color: #e0faff;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    text-shadow: 0 0 6px rgba(0,255,255,0.4);
+  }
     </style>
 
     <div class="relative z-10 text-center max-w-3xl p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl border border-cyan-400/30">
@@ -61,57 +105,53 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-      <!-- CARD -->
-      <div class="group [perspective:1000px]">
-        <div class="relative h-64 w-full rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-white/10 backdrop-blur-lg">
-
-          <!-- Front -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 [backface-visibility:hidden]">
-            <img src="https://cdn-icons-png.flaticon.com/512/3203/3203071.png" class="w-20 opacity-90 mb-3" />
-            <h3 class="text-xl font-semibold">Soporte Técnico</h3>
-          </div>
-
-          <!-- Back -->
-          <div class="absolute inset-0 p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] flex items-center justify-center">
-            <p class="opacity-90 text-sm">Resolución de problemas, mantenimiento preventivo y asistencia remota.</p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="group [perspective:1000px]">
-        <div class="relative h-64 w-full rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-white/10 backdrop-blur-lg">
-
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 [backface-visibility:hidden]">
-            <img src="https://cdn-icons-png.flaticon.com/512/1048/1048948.png" class="w-20 opacity-90 mb-3" />
-            <h3 class="text-xl font-semibold">Redes & Firewall</h3>
-          </div>
-
-          <div class="absolute inset-0 p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] flex items-center justify-center">
-            <p class="opacity-90 text-sm">Configuración de redes, cableado, routers, switches y firewalls.</p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- CARD 3 -->
-      <div class="group [perspective:1000px]">
-        <div class="relative h-64 w-full rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-white/10 backdrop-blur-lg">
-
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 [backface-visibility:hidden]">
-            <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" class="w-20 opacity-90 mb-3" />
-            <h3 class="text-xl font-semibold">Servidores & Virtualización</h3>
-          </div>
-
-          <div class="absolute inset-0 p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] flex items-center justify-center">
-            <p class="opacity-90 text-sm">Administración de VMware, Proxmox y entornos Linux/Windows.</p>
-          </div>
-
-        </div>
-      </div>
-
+      <!-- CARD 1 — Soporte Técnico-->
+      <div class="flip-card">
+  <div class="flip-inner">
+    
+    <div class="flip-front">
+      <img src="https://cdn-icons-png.flaticon.com/512/3203/3203071.png" class="w-20 opacity-90 mb-3" />
+      <h3 class="text-xl font-semibold">Soporte Técnico</h3>
     </div>
+
+    <div class="flip-back">
+      <p>Resolución de problemas, mantenimiento preventivo y asistencia remota.</p>
+    </div>
+
+  </div>
+</div>
+
+      <!-- CARD 2 Redes & Firewall-->
+      <div class="flip-card">
+  <div class="flip-inner">
+
+    <div class="flip-front">
+      <img src="https://cdn-icons-png.flaticon.com/512/1048/1048948.png" class="w-20 opacity-90 mb-3" />
+      <h3 class="text-xl font-semibold">Redes & Firewall</h3>
+    </div>
+
+    <div class="flip-back">
+      <p>Configuración de redes, cableado, routers, switches y firewalls.</p>
+    </div>
+
+  </div>
+</div>
+
+      <!-- CARD 3 Servidores & Virtualización-->
+      <div class="flip-card">
+  <div class="flip-inner">
+
+    <div class="flip-front">
+      <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" class="w-20 opacity-90 mb-3" />
+      <h3 class="text-xl font-semibold">Servidores & Virtualización</h3>
+    </div>
+
+    <div class="flip-back">
+      <p>Administración de VMware, Proxmox y entornos Linux/Windows.</p>
+    </div>
+
+  </div>
+</div>
   </section>
 
   <!-- TECNOLOGÍAS -->
