@@ -6,385 +6,347 @@
   <title>Jan Schroer | Soporte Técnico IT</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a2c0b2d2b9.js" crossorigin="anonymous"></script>
 
   <style>
-    :root {
-      --bg-color: #0a192f;
-      --section-bg: #112240;
-      --text-color: #e6f1ff;
-      --accent: #64ffda;
-      --accent-hover: #45e6c0;
-      --header-bg: linear-gradient(135deg, #0a192f, #112240);
+    :root{
+      --bg:#081224; /* dark background */
+      --card:#0e2740;
+      --muted:#9fb3d1;
+      --accent:#40e0d0;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
     }
-    body.light {
-      --bg-color: #f4f7fa;
-      --section-bg: #fff;
-      --text-color: #1c1c1c;
-      --accent: #0077b6;
-      --accent-hover: #005f86;
-      --header-bg: linear-gradient(135deg, #0e356a, #1c5fa8);
-    }
+    body.light{ --bg:#f4f7fb; --card:#ffffff; --muted:#425166; --accent:#0077b6; --glass: rgba(10,25,47,0.04); --glass-2: rgba(10,25,47,0.02); }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: background 0.4s ease, color 0.4s ease;
-      overflow-x: hidden;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background 0.35s ease, color 0.35s ease;
     }
 
-    header {
-      background: var(--header-bg);
-      color: white;
-      text-align: center;
-      padding: 5rem 1rem 4rem;
-      position: relative;
+    /* header / hero */
+    header.site-header{
+      background: linear-gradient(180deg, rgba(4,17,34,0.9), rgba(6,28,50,0.85));
+      padding:48px 20px 80px;
+      position:relative;
+      overflow:hidden;
     }
+    .container{ max-width:1120px; margin:0 auto; padding:0 20px; }
 
-    header h1 {
-      font-size: 2.6rem;
-      letter-spacing: 1px;
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px;
     }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.85;
-      margin-top: 0.5rem;
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:48px; height:48px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#2bb7ad); display:flex;align-items:center;justify-content:center;color:#041428;font-weight:700;font-family:Poppins, sans-serif;
+      box-shadow:0 6px 18px rgba(2,8,18,0.6);
     }
+    .brand h3{color:#e6f1ff;margin:0;font-size:1rem}
+    .nav-actions{display:flex;gap:10px;align-items:center}
 
-    .btn-contacto {
-      margin-top: 2rem;
-      display: inline-block;
-      background: var(--accent);
-      color: #0a192f;
-      padding: 0.9rem 1.8rem;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s ease;
+    .theme-toggle{ background:transparent;border:1px solid rgba(255,255,255,0.06); padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer}
+    .theme-toggle:hover{border-color:rgba(255,255,255,0.12)}
+
+    .hero{
+      display:grid; grid-template-columns: 1fr 420px; gap:32px; align-items:center;
     }
+    .hero-left h1{ font-size:2.4rem; line-height:1.05; color:#eaf6ff; margin:0 0 12px}
+    .hero-left p{ color:var(--muted); margin:0 0 18px }
+    .hero-ctas{ display:flex; gap:12px; align-items:center }
+    .btn-primary{ background:linear-gradient(90deg,var(--accent),#2bb7ad); color:#021426; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600 }
+    .btn-outline{ background:transparent; border:1px solid rgba(255,255,255,0.06); padding:10px 16px; border-radius:10px; color:var(--muted); text-decoration:none }
 
-    .btn-contacto:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
+    .hero-right{ border-radius:14px; overflow:hidden; box-shadow:0 10px 30px rgba(2,8,18,0.6); background: linear-gradient(180deg,#06243a,#08304a); padding:18px }
+    .hero-card{ color:#dff6f0 }
+    .stat-row{ display:flex; gap:12px; margin-top:12px }
+    .stat{ background:var(--glass); padding:10px 12px; border-radius:10px; font-weight:600; color:#e6f1ff }
 
-    .dark-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: #0a192f;
-      border: none;
-      border-radius: 20px;
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      z-index: 101;
-      transition: background 0.3s ease;
-    }
+    /* wave separator */
+    .wave{ position:absolute; left:0; right:0; bottom:-1px; height:80px; pointer-events:none; }
 
-    .dark-toggle:hover { background: var(--accent-hover); }
+    /* sections */
+    section{ margin:36px auto; max-width:1120px; padding:28px 20px; }
+    .card{ background:var(--card); border-radius:12px; padding:20px; box-shadow: 0 8px 30px rgba(2,8,18,0.6); transition:transform .28s ease, box-shadow .28s ease }
+    .card:hover{ transform:translateY(-6px); box-shadow: 0 18px 40px rgba(2,8,18,0.7) }
 
-    section {
-      max-width: 1000px;
-      margin: 3rem auto;
-      background: var(--section-bg);
-      padding: 2.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease, background 0.4s ease, color 0.4s ease;
-    }
+    /* Services: horizontal cards style 3 */
+    .services-grid{ display:grid; gap:18px }
+    .service-item{ display:grid; grid-template-columns: 140px 1fr; gap:18px; align-items:center; padding:14px; border-radius:12px; background:linear-gradient(180deg,var(--glass),var(--glass-2)); }
+    .service-media{ width:140px; height:92px; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); }
+    .service-media img{ width:100%; height:100%; object-fit:cover; display:block }
+    .service-body h3{ margin:0; color:#eaf6ff }
+    .service-body p{ margin:8px 0 0; color:var(--muted) }
+    .service-actions{ margin-top:12px; display:flex; gap:8px }
+    .pill{ background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px }
 
-    section.visible { opacity: 1; transform: translateY(0); }
+    /* Technologies grid style 4 */
+    .tech-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap:16px; margin-top:12px }
+    .tech-item{ display:flex; align-items:center; justify-content:center; gap:10px; padding:12px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03) }
+    .tech-item img{ max-height:36px; max-width:100px; opacity:0.95 }
 
-    h2 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.8rem;
-      font-size: 1.6rem;
-    }
+    /* footer */
+    footer{ padding:28px 20px; text-align:center; color:var(--muted); background:transparent }
 
-    p { margin-bottom: 1rem; line-height: 1.7; }
+    /* small helpers */
+    .muted{ color:var(--muted) }
+    .row{ display:flex; gap:12px; align-items:center; }
 
-    /* Servicios */
-    ul { list-style: none; padding: 0; }
-
-    .servicio-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      padding: 0.8rem 0.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      transition: background 0.3s ease;
-    }
-
-    .servicio-header:hover { background: rgba(255,255,255,0.05); }
-
-    .servicio-header span {
-      display: flex;
-      align-items: center;
-      font-weight: 500;
-      font-size: 1.1rem;
-    }
-
-    .servicio-header i {
-      color: var(--accent);
-      margin-right: 0.6rem;
-    }
-
-    .toggle-desc {
-      background: none;
-      border: none;
-      color: var(--accent);
-      font-size: 1.3rem;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .toggle-desc.active { transform: rotate(45deg); }
-
-    .servicio-desc {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      padding-left: 2rem;
-      border-left: 2px solid var(--accent);
-      color: var(--text-color);
-      transition: all 0.4s ease;
-      font-size: 0.95rem;
-    }
-
-    .servicio-desc.show {
-      max-height: 200px;
-      opacity: 1;
-      margin-top: 0.5rem;
-    }
-
-    /* Banners */
-    .banner, .banner-tec {
-      width: 100%;
-      max-width: 1000px;
-      margin: 2rem auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    }
-
-    .banner img, .banner-tec img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .banner img:hover, .banner-tec img:hover {
-      transform: scale(1.05);
-    }
-
-    .banner-tec img { height: 150px; }
-
-    /* Contacto */
-    .contacto a {
-      display: inline-block;
-      margin: 0.5rem;
-      text-decoration: none;
-      background: var(--accent);
-      color: #0a192f;
-      padding: 0.7rem 1.4rem;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .contacto a:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #8892b0;
-      font-size: 0.9rem;
-      background: #0a192f;
-    }
-
-    footer .social a {
-      color: var(--accent);
-      margin: 0 0.5rem;
-      font-size: 1.2rem;
-      transition: color 0.3s ease;
-    }
-
-    footer .social a:hover { color: var(--accent-hover); }
-
-    /* WhatsApp */
-    .whatsapp-fixed {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-      z-index: 100;
-    }
-
-    .whatsapp-fixed:hover { transform: scale(1.07); }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      section { padding: 1.5rem; margin: 1.5rem; }
-    }
+    /* responsive */
+    @media (max-width:900px){ .hero{ grid-template-columns:1fr } .hero-right{ order:-1 } .service-item{ grid-template-columns: 110px 1fr } }
+    @media (max-width:520px){ .service-item{ grid-template-columns:1fr; } .service-media{ height:140px } .tech-grid{ grid-template-columns: repeat(2,1fr) } }
   </style>
 </head>
-
 <body>
-  <button class="dark-toggle">☾ / ☀︎</button>
 
-  <header>
-    <h1>Soporte Técnico IT</h1>
-    <p>Infraestructura, redes y servicios cloud — más de 15 años de experiencia profesional.</p>
-    <a href="#contacto" class="btn-contacto">Contactame</a>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">JS</div>
+        <div>
+          <h3>Jan Schroer</h3>
+          <div class="muted" style="font-size:13px">Soporte Técnico · Buenos Aires</div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-adjust"></i></button>
+        <a href="#contacto" class="btn-outline">Contacto</a>
+      </div>
+    </div>
+
+    <div class="container hero">
+      <div class="hero-left">
+        <h1>Infraestructura IT confiable que hace funcionar tu empresa.</h1>
+        <p class="muted">Soporte, redes, virtualización y servicios cloud con foco en disponibilidad y seguridad. Atención profesional para pymes y proyectos críticos.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="https://wa.me/5491169824804" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;Consultá por WhatsApp</a>
+          <a class="btn-outline" href="mailto:eljan.88@gmail.com"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Enviar correo</a>
+        </div>
+
+        <div class="stat-row" style="margin-top:18px">
+          <div class="stat">15+ años experiencia</div>
+          <div class="stat">Soporte 24/7 (acordado)</div>
+        </div>
+      </div>
+
+      <div class="hero-right card hero-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="muted">Servicios más solicitados</div>
+            <h3 style="margin:6px 0 0">Mantenimiento · Redes · Cloud</h3>
+          </div>
+          <div class="muted">Tarifas y packs</div>
+        </div>
+
+        <div style="margin-top:14px;display:grid;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><div class="muted">Tiempo medio de respuesta</div><strong>~2h</strong></div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><div class="muted">Clientes recurrentes</div><strong>80%</strong></div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+          <div class="pill">Proxmox</div>
+          <div class="pill">VMware</div>
+          <div class="pill">pfSense</div>
+        </div>
+      </div>
+    </div>
+
+    <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440 80 L0 80 Z" fill="var(--card)"/></svg>
   </header>
 
-  <div class="banner">
-    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80" alt="Tecnología moderna">
-  </div>
+  <main>
+    <section id="servicios" class="container">
+      <div class="card">
+        <h2>Servicios</h2>
+        <p class="muted">Soluciones a medida. Elegí el servicio y consultá por un diagnóstico sin compromiso.</p>
 
-  <section id="perfil">
-    <h2>Sobre mí</h2>
-    <p>Soy <strong>Jan Schroer</strong>, técnico especializado en soporte y administración de infraestructura IT. Brindo soluciones confiables y personalizadas para empresas y profesionales, priorizando la eficiencia, la seguridad y la continuidad operativa.</p>
-  </section>
+        <div class="services-grid" style="margin-top:16px">
+          <!-- Service 1 -->
+          <div class="service-item">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60" alt="Soporte remoto">
+            </div>
+            <div class="service-body">
+              <h3>Soporte remoto y en sitio</h3>
+              <p class="muted">Resolución rápida de incidentes, diagnóstico remoto y atención en sitio según requerimiento.</p>
+              <div class="service-actions">
+                <a class="btn-primary" href="https://wa.me/5491169824804" target="_blank">Contactar</a>
+                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
+              </div>
+            </div>
+          </div>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <ul>
-      <li>
-        <div class="servicio-header">
-          <span><i class="fas fa-headset"></i> Soporte remoto y en sitio</span>
-          <button class="toggle-desc">+</button>
+          <!-- Service 2 -->
+          <div class="service-item">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1581093458401-4b3b1a1f7b69?auto=format&fit=crop&w=800&q=60" alt="Mantenimiento servidores">
+            </div>
+            <div class="service-body">
+              <h3>Mantenimiento de servidores</h3>
+              <p class="muted">Monitoreo, parches y mejoras de rendimiento para minimizar tiempo de inactividad.</p>
+              <div class="service-actions">
+                <a class="btn-primary" href="#contacto">Solicitar diagnóstico</a>
+                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-item">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=60" alt="Redes seguras">
+            </div>
+            <div class="service-body">
+              <h3>Redes seguras</h3>
+              <p class="muted">Diseño e implementación de firewalls y segmentación con pfSense, Ubiquiti y Mikrotik.</p>
+              <div class="service-actions">
+                <a class="btn-primary" href="#contacto">Pedir presupuesto</a>
+                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-item">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60" alt="Cloud services">
+            </div>
+            <div class="service-body">
+              <h3>Servicios Cloud</h3>
+              <p class="muted">Migración, administración y seguridad en Microsoft 365, Azure y Google Workspace.</p>
+              <div class="service-actions">
+                <a class="btn-primary" href="#contacto">Consultá migración</a>
+                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-item">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981d?auto=format&fit=crop&w=800&q=60" alt="Virtualizacion">
+            </div>
+            <div class="service-body">
+              <h3>Virtualización & HA</h3>
+              <p class="muted">Proxmox y VMware para alta disponibilidad y recuperación ante fallas.</p>
+              <div class="service-actions">
+                <a class="btn-primary" href="#contacto">Hablemos</a>
+                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-item">
+            <div class="service-media">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60" alt="Consultoria">
+            </div>
+            <div class="service-body">
+              <h3>Consultoría IT</h3>
+              <p class="muted">Estrategia, diseño y plan de modernización a medida para tu organización.</p>
+              <div class="service-actions">
+                <a class="btn-primary" href="#contacto">Agendar consulta</a>
+                <button class="btn-outline" onclick="toggleDetail(this)">Más info</button>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <p class="servicio-desc">Asistencia técnica profesional, ya sea presencial o a distancia, con tiempos de respuesta rápidos y diagnóstico preciso.</p>
-      </li>
+      </div>
+    </section>
 
-      <li>
-        <div class="servicio-header">
-          <span><i class="fas fa-server"></i> Mantenimiento de servidores</span>
-          <button class="toggle-desc">+</button>
+    <section id="tecnologias" class="container">
+      <div class="card">
+        <h2>Tecnologías</h2>
+        <p class="muted">Plataformas y herramientas en las que trabajo habitualmente.</p>
+
+        <div class="tech-grid">
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/VMware_logo.svg" alt="VMware"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Proxmox_Logo.svg" alt="Proxmox"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Red_Hat_logo.svg" alt="Linux"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Windows_logo_-_2021.svg" alt="Windows Server"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Ubisoft_logo.svg" alt="Ubiquiti placeholder"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/MikroTik_logo.svg" alt="Mikrotik"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Logo_pfSense.svg" alt="pfSense"></div>
+          <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Microsoft_Azure_logo.svg" alt="Azure"></div>
         </div>
-        <p class="servicio-desc">Monitoreo, actualización y reparación de sistemas y servidores críticos para garantizar estabilidad y rendimiento.</p>
-      </li>
+      </div>
+    </section>
 
-      <li>
-        <div class="servicio-header">
-          <span><i class="fas fa-network-wired"></i> Redes seguras</span>
-          <button class="toggle-desc">+</button>
+    <section id="testimonial" class="container">
+      <div class="card" style="display:flex;gap:18px;align-items:center">
+        <div style="flex:1">
+          <h2>Clientes dicen</h2>
+          <p class="muted">"Jan nos acompañó en la migración a Proxmox y mejoró la resiliencia de nuestros servicios críticos. Comunicación clara y soluciones prácticas."</p>
+          <div class="muted">— Empresa XYZ</div>
         </div>
-        <p class="servicio-desc">Diseño, implementación y administración de redes seguras con tecnologías pfSense, Mikrotik y Ubiquiti.</p>
-      </li>
-
-      <li>
-        <div class="servicio-header">
-          <span><i class="fas fa-cloud"></i> Servicios Cloud</span>
-          <button class="toggle-desc">+</button>
+        <div style="width:160px;text-align:center">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=60" alt="Cliente" style="width:96px;height:96px;border-radius:12px;object-fit:cover;display:block;margin:0 auto;box-shadow:0 8px 20px rgba(2,8,18,0.6)">
         </div>
-        <p class="servicio-desc">Configuración y gestión de plataformas Microsoft 365, Azure y Google Workspace para potenciar la productividad.</p>
-      </li>
+      </div>
+    </section>
 
-      <li>
-        <div class="servicio-header">
-          <span><i class="fas fa-cogs"></i> Virtualización y alta disponibilidad</span>
-          <button class="toggle-desc">+</button>
+    <section id="contacto" class="container">
+      <div class="card">
+        <h2>Contacto</h2>
+        <p class="muted">¿Necesitás soporte o asesoramiento IT? Contactame y hacemos un diagnóstico inicial.</p>
+        <div class="row" style="margin-top:12px">
+          <a class="btn-primary" href="https://wa.me/5491169824804" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;Enviar WhatsApp</a>
+          <a class="btn-outline" href="mailto:eljan.88@gmail.com"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Enviar correo</a>
         </div>
-        <p class="servicio-desc">Optimización de entornos virtuales con VMware y Proxmox, garantizando eficiencia y continuidad operativa.</p>
-      </li>
+      </div>
+    </section>
 
-      <li>
-        <div class="servicio-header">
-          <span><i class="fas fa-lightbulb"></i> Consultoría IT</span>
-          <button class="toggle-desc">+</button>
-        </div>
-        <p class="servicio-desc">Asesoramiento experto para modernizar tu infraestructura y planificar soluciones escalables a largo plazo.</p>
-      </li>
-    </ul>
-  </section>
-
-  <div class="banner-tec">
-    <img src="https://images.unsplash.com/photo-1581091215367-59ab6c3c0c2a?auto=format&fit=crop&w=1600&q=80" alt="Tecnologías IT">
-  </div>
-
-  <section id="tecnologias">
-    <h2>Tecnologías</h2>
-    <ul>
-      <li>VMware vSphere, Proxmox VE</li>
-      <li>Windows Server, Linux</li>
-      <li>pfSense, Fortinet, Mikrotik</li>
-      <li>Ubiquiti UniFi, TP-Link Omada</li>
-      <li>PBX IP (Issabel, FreePBX)</li>
-      <li>Cableado estructurado y armado de racks</li>
-    </ul>
-  </section>
-
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <p>¿Necesitás soporte o asesoramiento IT? Hablemos:</p>
-    <a href="mailto:eljan.88@gmail.com"><i class="fas fa-envelope"></i> Correo</a>
-    <a href="https://wa.me/5491169824804" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <p>📍 Buenos Aires, Argentina</p>
-  </section>
+  </main>
 
   <footer>
-    <div class="social">
-      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:12px"><div class="logo">JS</div><div class="muted">Jan Schroer — Soporte Técnico IT · Buenos Aires</div></div>
+      <div class="social"><a href="#" class="muted"><i class="fab fa-linkedin"></i></a> <a href="#" class="muted"><i class="fab fa-github"></i></a></div>
     </div>
-    <p>© 2025 Jan Schroer — Soporte Técnico IT en Buenos Aires</p>
   </footer>
 
-  <a href="https://wa.me/5491169824804" class="whatsapp-fixed" target="_blank" title="Enviar mensaje por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <a class="whatsapp-fixed" href="https://wa.me/5491169824804" target="_blank" title="Enviar WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
   <script>
-    // Modo claro/oscuro
-    const toggleBtn = document.querySelector('.dark-toggle');
-    toggleBtn.addEventListener('click', () => document.body.classList.toggle('light'));
+    // theme toggle (light/dark)
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', ()=> document.body.classList.toggle('light'));
 
-    // Animación al hacer scroll
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.2 });
-    sections.forEach(sec => observer.observe(sec));
+    // simple detail toggle for service cards (opens small modal-like detail)
+    function toggleDetail(btn){
+      const item = btn.closest('.service-item');
+      if(!item) return;
+      // create a simple overlay detail
+      const overlay = document.createElement('div');
+      overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(2,6,12,0.6)'; overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center'; overlay.style.zIndex=1200;
+      const box = document.createElement('div'); box.style.maxWidth='760px'; box.style.width='92%'; box.style.background='var(--card)'; box.style.borderRadius='12px'; box.style.padding='20px'; box.style.boxShadow='0 20px 60px rgba(2,8,18,0.7)';
+      // fill content
+      const title = item.querySelector('h3').innerText; const text = item.querySelector('p').innerText;
+      box.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><h3 style=\"margin:0;color:var(--accent)\">${title}</h3><button style=\"background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer\">✕</button></div><p class=\"muted\" style=\"margin-top:12px\">${text} <br><br>Para más detalles y alcance de proyecto, enviá un mensaje por WhatsApp o correo.</p><div style=\"margin-top:12px;display:flex;gap:10px\"><a class=\"btn-primary\" href=\"https://wa.me/5491169824804\" target=\"_blank\">Contactar</a><a class=\"btn-outline\" href=\"mailto:eljan.88@gmail.com\">Enviar correo</a></div>`;
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+      overlay.querySelector('button').addEventListener('click', ()=> overlay.remove());
+      overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.remove(); });
+    }
 
-    // Servicios desplegables
-    document.querySelectorAll('.toggle-desc').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const desc = btn.parentElement.nextElementSibling;
-        const show = desc.classList.contains('show');
-        desc.classList.toggle('show', !show);
-        btn.classList.toggle('active', !show);
-      });
-    });
+    // intersection observer for reveal
+    const reveal = (selector)=>{
+      const els = document.querySelectorAll(selector);
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+      },{threshold:0.15});
+      els.forEach(el=>io.observe(el));
+    }
+    reveal('section');
   </script>
 </body>
 </html>
