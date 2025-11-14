@@ -3,330 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jan Schroer | Soporte Técnico IT</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2c0b2d2b9.js" crossorigin="anonymous"></script>
-
-  <style>
-    :root{
-      --bg:#081224; /* dark background */
-      --card:#0e2740;
-      --muted:#9fb3d1;
-      --accent:#40e0d0;
-      --glass: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.02);
-    }
-    body.light{ --bg:#f4f7fb; --card:#ffffff; --muted:#425166; --accent:#0077b6; --glass: rgba(10,25,47,0.04); --glass-2: rgba(10,25,47,0.02); }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background:var(--bg);
-      color:var(--muted);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      transition:background 0.35s ease, color 0.35s ease;
-    }
-
-    /* header / hero */
-    header.site-header{
-      background: linear-gradient(180deg, rgba(4,17,34,0.9), rgba(6,28,50,0.85));
-      padding:48px 20px 80px;
-      position:relative;
-      overflow:hidden;
-    }
-    .container{ max-width:1120px; margin:0 auto; padding:0 20px; }
-
-    .nav{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px;
-    }
-    .brand{ display:flex; align-items:center; gap:12px; }
-    .logo{
-      width:48px; height:48px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#2bb7ad); display:flex;align-items:center;justify-content:center;color:#041428;font-weight:700;font-family:Poppins, sans-serif;
-      box-shadow:0 6px 18px rgba(2,8,18,0.6);
-    }
-    .brand h3{color:#e6f1ff;margin:0;font-size:1rem}
-    .nav-actions{display:flex;gap:10px;align-items:center}
-
-    .theme-toggle{ background:transparent;border:1px solid rgba(255,255,255,0.06); padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer}
-    .theme-toggle:hover{border-color:rgba(255,255,255,0.12)}
-
-    .hero{
-      display:grid; grid-template-columns: 1fr 420px; gap:32px; align-items:center;
-    }
-    .hero-left h1{ font-size:2.4rem; line-height:1.05; color:#eaf6ff; margin:0 0 12px}
-    .hero-left p{ color:var(--muted); margin:0 0 18px }
-    .hero-ctas{ display:flex; gap:12px; align-items:center }
-    .btn-primary{ background:linear-gradient(90deg,var(--accent),#2bb7ad); color:#021426; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:600 }
-    .btn-outline{ background:transparent; border:1px solid rgba(255,255,255,0.06); padding:10px 16px; border-radius:10px; color:var(--muted); text-decoration:none }
-
-    .hero-right{ border-radius:14px; overflow:hidden; box-shadow:0 10px 30px rgba(2,8,18,0.6); background: linear-gradient(180deg,#06243a,#08304a); padding:18px }
-    .hero-card{ color:#dff6f0 }
-    .stat-row{ display:flex; gap:12px; margin-top:12px }
-    .stat{ background:var(--glass); padding:10px 12px; border-radius:10px; font-weight:600; color:#e6f1ff }
-
-    /* wave separator */
-    .wave{ position:absolute; left:0; right:0; bottom:-1px; height:80px; pointer-events:none; }
-
-    /* sections */
-    section{ margin:36px auto; max-width:1120px; padding:28px 20px; }
-    .card{ background:var(--card); border-radius:12px; padding:20px; box-shadow: 0 8px 30px rgba(2,8,18,0.6); transition:transform .28s ease, box-shadow .28s ease }
-    .card:hover{ transform:translateY(-6px); box-shadow: 0 18px 40px rgba(2,8,18,0.7) }
-
-    /* Services: horizontal cards style 3 */
-    .services-grid{ display:grid; gap:18px }
-    .service-item{ display:grid; grid-template-columns: 140px 1fr; gap:18px; align-items:center; padding:14px; border-radius:12px; background:linear-gradient(180deg,var(--glass),var(--glass-2)); }
-    .service-media{ width:140px; height:92px; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); }
-    .service-media img{ width:100%; height:100%; object-fit:cover; display:block }
-    .service-body h3{ margin:0; color:#eaf6ff }
-    .service-body p{ margin:8px 0 0; color:var(--muted) }
-    .service-actions{ margin-top:12px; display:flex; gap:8px }
-    .pill{ background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; color:var(--muted); font-size:13px }
-
-    /* Technologies grid style 4 */
-    .tech-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap:16px; margin-top:12px }
-    .tech-item{ display:flex; align-items:center; justify-content:center; gap:10px; padding:12px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03) }
-    .tech-item img{ max-height:36px; max-width:100px; opacity:0.95 }
-
-    /* footer */
-    footer{ padding:28px 20px; text-align:center; color:var(--muted); background:transparent }
-
-    /* small helpers */
-    .muted{ color:var(--muted) }
-    .row{ display:flex; gap:12px; align-items:center; }
-
-    /* responsive */
-    @media (max-width:900px){ .hero{ grid-template-columns:1fr } .hero-right{ order:-1 } .service-item{ grid-template-columns: 110px 1fr } }
-    @media (max-width:520px){ .service-item{ grid-template-columns:1fr; } .service-media{ height:140px } .tech-grid{ grid-template-columns: repeat(2,1fr) } }
-  .hero { position:relative; height:60vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; color:white; }
-.hero-slider { position:absolute; top:0; left:0; width:100%; height:100%; }
-.hero-slider .slide { position:absolute; width:100%; height:100%; opacity:0; transition:opacity 1s ease; }
-.hero-slider .slide.active { opacity:1; }
-.hero-slider img { width:100%; height:100%; object-fit:cover; filter:brightness(0.45); }
-.hero-content { position:relative; z-index:2; max-width:700px; padding:1rem; }
-
-</style>
+  <title>Servicios IT - Jan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100 font-sans">
 
-  <header class="hero" style="backdrop-filter: blur(12px); background: rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.1)">
-    <div class="hero-slider" style="filter:blur(2px) brightness(0.6)">
-      <div class="slide active">
-        <img src="https://images.unsplash.com/photo-1581090464777-5ef8dce9c9f1?auto=format&fit=crop&w=1600&q=80" alt="Tecnología moderna" />
-      </div>
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80" alt="Infraestructura IT" />
-      </div>
-      <div class="slide">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80" alt="Redes y servidores" />
-      </div>
-    </div>
+  <!-- HERO -->
+  <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80" 
+         class="absolute inset-0 w-full h-full object-cover opacity-40" />
 
-    <div class="hero-content" style="background: rgba(255,255,255,0.08); padding:2rem; border-radius:18px; backdrop-filter:blur(10px); box-shadow:0 8px 32px rgba(0,0,0,0.25)">
-      <h1>Soporte Técnico IT</h1>
-      <p>Infraestructura, redes y servicios cloud — soluciones profesionales para empresas.</p>
-      <a href="#contacto" class="btn-contacto">Contactame</a>
+    <div class="relative z-10 text-center max-w-3xl p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-xl">
+      <h1 class="text-4xl font-bold mb-4">Soporte Técnico IT</h1>
+      <p class="text-lg opacity-90">Más de 15 años de experiencia en infraestructura, redes y servicios cloud.</p>
+      <a href="#contacto" class="inline-block mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-500 transition rounded-xl text-white font-semibold">Contactar</a>
     </div>
   </header>
 
-  <main>
-    <section id="servicios">
-  <h2>Servicios</h2>
-  <div class="servicios-grid">
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-headset"></i>
-          <h3>Soporte remoto y en sitio</h3>
-        </div>
-        <div class="card-back">
-          <p>Asistencia técnica profesional, presencial o remota, con respuesta rápida y diagnósticos precisos.</p>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="py-20 container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10 text-center">Servicios</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- CARD -->
+      <div class="group [perspective:1000px]">
+        <div class="relative h-64 w-full rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-white/10 backdrop-blur-lg">
+
+          <!-- Front -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 [backface-visibility:hidden]">
+            <img src="https://cdn-icons-png.flaticon.com/512/3203/3203071.png" class="w-20 opacity-90 mb-3" />
+            <h3 class="text-xl font-semibold">Soporte Técnico</h3>
+          </div>
+
+          <!-- Back -->
+          <div class="absolute inset-0 p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] flex items-center justify-center">
+            <p class="opacity-90 text-sm">Resolución de problemas, mantenimiento preventivo y asistencia remota.</p>
+          </div>
+
         </div>
       </div>
+
+      <!-- CARD 2 -->
+      <div class="group [perspective:1000px]">
+        <div class="relative h-64 w-full rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-white/10 backdrop-blur-lg">
+
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 [backface-visibility:hidden]">
+            <img src="https://cdn-icons-png.flaticon.com/512/1048/1048948.png" class="w-20 opacity-90 mb-3" />
+            <h3 class="text-xl font-semibold">Redes & Firewall</h3>
+          </div>
+
+          <div class="absolute inset-0 p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] flex items-center justify-center">
+            <p class="opacity-90 text-sm">Configuración de redes, cableado, routers, switches y firewalls.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="group [perspective:1000px]">
+        <div class="relative h-64 w-full rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] bg-white/10 backdrop-blur-lg">
+
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-6 [backface-visibility:hidden]">
+            <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" class="w-20 opacity-90 mb-3" />
+            <h3 class="text-xl font-semibold">Servidores & Virtualización</h3>
+          </div>
+
+          <div class="absolute inset-0 p-6 text-center [transform:rotateY(180deg)] [backface-visibility:hidden] flex items-center justify-center">
+            <p class="opacity-90 text-sm">Administración de VMware, Proxmox y entornos Linux/Windows.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-server"></i>
-          <h3>Mantenimiento de servidores</h3>
-        </div>
-        <div class="card-back">
-          <p>Monitoreo, actualización y reparación de servidores para garantizar estabilidad y alto desempeño.</p>
-        </div>
-      </div>
+  <!-- TECNOLOGÍAS -->
+  <section id="tecnologias" class="py-20 container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10 text-center">Tecnologías</h2>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-10 place-items-center">
+
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vmware/vmware-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/proxmox/proxmox-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg" class="w-20 opacity-90" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" class="w-20 opacity-90" />
+
     </div>
+  </section>
 
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-network-wired"></i>
-          <h3>Redes seguras</h3>
-        </div>
-        <div class="card-back">
-          <p>Implementación y administración de redes seguras con pfSense, Mikrotik y Ubiquiti.</p>
-        </div>
-      </div>
-    </div>
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 text-center">
+    <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+    <p class="opacity-80 mb-6">¿Necesitás asistencia técnica? Hablemos.</p>
+    <a href="https://wa.me/" target="_blank" class="px-6 py-3 bg-green-600 hover:bg-green-500 rounded-xl font-semibold">WhatsApp</a>
+  </section>
 
-    <div class="card-flip">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-cloud"></i>
-          <h3>Servicios Cloud</h3>
-        </div>
-        <div class="card-back">
-          <p>Configuración de Microsoft 365, Azure y Google Workspace para mejorar productividad y seguridad.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- BOTÓN FLOTANTE WHATSAPP -->
+  <a href="https://wa.me/" target="_blank" class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-500 p-4 rounded-full shadow-xl transition">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-8" />
+  </a>
 
-<style>
-  .servicios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .card-flip {
-    perspective: 1000px;
-  }
-
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    transform-style: preserve-3d;
-    transition: transform 0.7s;
-    cursor: pointer;
-  }
-
-  .card-inner:hover {
-    transform: rotateY(180deg);
-  }
-
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    background: var(--section-bg);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
-
-  .card-front i {
-    font-size: 2rem;
-    margin-bottom: 0.8rem;
-    color: var(--accent);
-  }
-
-  .card-front h3 {
-    text-align: center;
-    font-size: 1.1rem;
-  }
-
-  .card-back {
-    transform: rotateY(180deg);
-    text-align: center;
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-</style>
-
-    <section id="tecnologias" class="container">
-      <div class="card">
-        <h2>Tecnologías</h2>
-        <p class="muted">Plataformas y herramientas en las que trabajo habitualmente.</p>
-
-        <div class="tech-grid">
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vmware/vmware-original.svg" alt="VMware"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/proxmox/proxmox-original.svg" alt="Proxmox"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows Server"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg" alt="pfSense placeholder"></div>
-          <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Mikrotik placeholder"></div>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <section id="contacto" class="container">
-      <div class="card">
-        <h2>Contacto</h2>
-        <p class="muted">¿Necesitás soporte o asesoramiento IT? Contactame y hacemos un diagnóstico inicial.</p>
-        <div class="row" style="margin-top:12px">
-          <a class="btn-primary" href="https://wa.me/5491169824804" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp;&nbsp;Enviar WhatsApp</a>
-          <a class="btn-outline" href="mailto:eljan.88@gmail.com"><i class="fas fa-envelope"></i>&nbsp;&nbsp;Enviar correo</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div style="display:flex;align-items:center;gap:12px"><div class="logo">JS</div><div class="muted">Jan Schroer — Soporte Técnico IT · Buenos Aires</div></div>
-      <div class="social"><a href="#" class="muted"><i class="fab fa-linkedin"></i></a> <a href="#" class="muted"><i class="fab fa-github"></i></a></div>
-    </div>
-  </footer>
-
-  <a class="whatsapp-fixed" href="https://wa.me/5491169824804" target="_blank" title="Enviar WhatsApp"><i class="fab fa-whatsapp"></i></a>
-
-  <script>
-    // theme toggle (light/dark)
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', ()=> document.body.classList.toggle('light'));
-
-    // simple detail toggle for service cards (opens small modal-like detail)
-    function toggleDetail(btn){
-      const item = btn.closest('.service-item');
-      if(!item) return;
-      // create a simple overlay detail
-      const overlay = document.createElement('div');
-      overlay.style.position='fixed'; overlay.style.inset='0'; overlay.style.background='rgba(2,6,12,0.6)'; overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center'; overlay.style.zIndex=1200;
-      const box = document.createElement('div'); box.style.maxWidth='760px'; box.style.width='92%'; box.style.background='var(--card)'; box.style.borderRadius='12px'; box.style.padding='20px'; box.style.boxShadow='0 20px 60px rgba(2,8,18,0.7)';
-      // fill content
-      const title = item.querySelector('h3').innerText; const text = item.querySelector('p').innerText;
-      box.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><h3 style=\"margin:0;color:var(--accent)\">${title}</h3><button style=\"background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer\">✕</button></div><p class=\"muted\" style=\"margin-top:12px\">${text} <br><br>Para más detalles y alcance de proyecto, enviá un mensaje por WhatsApp o correo.</p><div style=\"margin-top:12px;display:flex;gap:10px\"><a class=\"btn-primary\" href=\"https://wa.me/5491169824804\" target=\"_blank\">Contactar</a><a class=\"btn-outline\" href=\"mailto:eljan.88@gmail.com\">Enviar correo</a></div>`;
-      overlay.appendChild(box);
-      document.body.appendChild(overlay);
-      overlay.querySelector('button').addEventListener('click', ()=> overlay.remove());
-      overlay.addEventListener('click',(e)=>{ if(e.target===overlay) overlay.remove(); });
-    }
-
-    // intersection observer for reveal
-    const reveal = (selector)=>{
-      const els = document.querySelectorAll(selector);
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-      },{threshold:0.15});
-      els.forEach(el=>io.observe(el));
-    }
-    reveal('section');
-  </script>
-<script>
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-setInterval(() => {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active');
-}, 4500);
-</script>
 </body>
 </html>
